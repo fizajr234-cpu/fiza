@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Healthcare Finder | Twin Cities Web GIS</title>
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">+</span>
+      <span>
+        <strong>Health<span class="brand-accent">Map</span></strong>
+        <small>WEB GIS APPLICATION</small>
+      </span>
+    </a>
+
+    <div class="header-label">
+      <span class="live-dot"></span>
+      OpenStreetMap Data
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">GEOGRAPHIC HEALTHCARE DIRECTORY</p>
+        <h1>Healthcare Finder</h1>
+        <p class="hero-description">
+          Explore hospitals, clinics, pharmacies and other healthcare
+          facilities across Islamabad and Rawalpindi.
+        </p>
+
+        <div class="study-area">
+          <span>◎</span>
+          <span>Study Area: Islamabad &amp; Rawalpindi, Pakistan</span>
+        </div>
+      </div>
+
+      <div class="hero-symbol" aria-hidden="true">
+        <span class="cross">+</span>
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Facility statistics">
+      <article class="stat-card">
+        <span class="stat-icon">✚</span>
+        <span class="stat-label">Facilities Loaded</span>
+        <strong id="totalCount">—</strong>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon">⌖</span>
+        <span class="stat-label">Currently Displayed</span>
+        <strong id="visibleCount">—</strong>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon">⌕</span>
+        <span class="stat-label">Facility Categories</span>
+        <strong id="categoryCount">5</strong>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">FIND A FACILITY</p>
+            <h2>Explore locations</h2>
+          </div>
+          <span class="heading-pin">⌖</span>
+        </div>
+
+        <label class="field-label" for="searchInput">
+          Search by name or facility details
+        </label>
+
+        <div class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="e.g. hospital, pharmacy..."
+            autocomplete="off">
+          <button id="clearSearch" type="button"
+            aria-label="Clear search">×</button>
+        </div>
+
+        <label class="field-label" for="categoryFilter">
+          Healthcare category
+        </label>
+
+        <select id="categoryFilter">
+          <option value="all">All facilities</option>
+          <option value="hospital">Hospitals</option>
+          <option value="clinic">Clinics</option>
+          <option value="pharmacy">Pharmacies</option>
+          <option value="doctors">Doctors</option>
+          <option value="dentist">Dental facilities</option>
+        </select>
+
+        <div class="results-heading">
+          <h3>Facility directory</h3>
+          <span id="resultBadge">0 results</span>
+        </div>
+
+        <div id="facilityList" class="facility-list">
+          <div class="empty-state">
+            <span class="loading-spinner"></span>
+            <p>Loading healthcare data...</p>
+          </div>
+        </div>
+
+        <button id="resetButton" class="reset-button" type="button">
+          ↺ &nbsp; Reset search and filters
+        </button>
+      </aside>
+
+      <section class="map-section">
+        <div class="map-toolbar">
+          <div>
+            <strong>Interactive Healthcare Map</strong>
+            <p>Select a marker to view facility information.</p>
+          </div>
+          <button id="refreshButton" class="refresh-button" type="button">
+            ↻ Refresh data
+          </button>
+        </div>
+
+        <div id="map" aria-label="Interactive healthcare map"></div>
+
+        <div class="map-footer">
+          <span><span class="live-dot"></span> API-powered map</span>
+          <span>© OpenStreetMap contributors</span>
+        </div>
+
+        <div id="statusMessage" class="status-message" role="status">
+          Preparing map...
+        </div>
+      </section>
+    </section>
+
+    <section class="information-section">
+      <div class="information-heading">
+        <p class="eyebrow">ABOUT THIS PROJECT</p>
+        <h2>Healthcare through geography</h2>
+        <p>
+          This Web GIS application retrieves healthcare facility data
+          from OpenStreetMap using the Overpass API and displays the
+          geographic locations on an interactive Leaflet map.
+        </p>
+      </div>
+
+      <div class="information-cards">
+        <article class="information-card">
+          <span class="info-icon">⌖</span>
+          <h3>Geographic visualization</h3>
+          <p>Explore the spatial distribution of healthcare facilities.</p>
+        </article>
+
+        <article class="information-card">
+          <span class="info-icon">⌕</span>
+          <h3>Search and filtering</h3>
+          <p>Find facilities by name, information or category.</p>
+        </article>
+
+        <article class="information-card">
+          <span class="info-icon">↗</span>
+          <h3>API integration</h3>
+          <p>Retrieve and process geographic data directly in JavaScript.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Healthcare Finder — Web GIS Application</p>
+    <p>
+      Data: OpenStreetMap contributors · API: Overpass API ·
+      Map library: Leaflet
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
